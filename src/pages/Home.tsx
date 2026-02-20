@@ -23,12 +23,8 @@ const REVIEWS = [
   },
 ];
 
-function Stars({ count = 5 }: { count?: number }) {
-  return (
-    <span className="text-white/90" aria-label={`${count} out of 5 stars`}>
-      {"★★★★★"}
-    </span>
-  );
+function Stars() {
+  return <span className="text-white/90">★★★★★</span>;
 }
 
 export default function Home() {
@@ -38,9 +34,24 @@ export default function Home() {
         title="Mobile Car Detailing Orlando, FL | ALLSTARS Mobile Detailing"
         description="Premium mobile car detailing within 25 miles of Orlando. Interior deep cleans, exterior hand washes, and full detail packages. Get a fast free quote today."
         path="/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "AutoDetailing",
+          name: "ALLSTARS Mobile Detailing",
+          telephone: "+16893127408",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "2346 Roberts Blvd",
+            addressLocality: "Orlando",
+            addressRegion: "FL",
+            postalCode: "32812",
+            addressCountry: "US",
+          },
+          areaServed: "Within 25 miles of Orlando, FL",
+          url: "",
+        }}
       />
 
-      {/* HERO */}
       <section className="relative overflow-hidden bg-zinc-950">
         <div className="pointer-events-none absolute inset-0">
           <video
@@ -121,18 +132,6 @@ export default function Home() {
                   Send your vehicle + your area. We’ll reply with pricing and available times.
                 </p>
 
-                <div className="mt-5 flex flex-wrap gap-2">
-                  <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs text-white/80">
-                    Exterior
-                  </span>
-                  <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs text-white/80">
-                    Interior
-                  </span>
-                  <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs text-white/80">
-                    Full Detail
-                  </span>
-                </div>
-
                 <div className="mt-6 grid gap-3">
                   <a
                     href={PHONE_TEL}
@@ -158,7 +157,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PACKAGES */}
+      {/* Packages teaser */}
       <section className="bg-zinc-950">
         <div className="mx-auto max-w-6xl px-4 py-14">
           <div className="mb-8">
@@ -195,10 +194,10 @@ export default function Home() {
                   ))}
                 </ul>
                 <Link
-                  to="/contact"
+                  to="/services"
                   className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-white px-4 py-3 text-sm font-semibold text-black hover:bg-white/90"
                 >
-                  Get a Quote
+                  View Services
                 </Link>
               </div>
             ))}
@@ -206,7 +205,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REVIEWS */}
+      {/* Reviews */}
       <section className="bg-zinc-950">
         <div className="mx-auto max-w-6xl px-4 pb-16">
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
@@ -245,7 +244,7 @@ export default function Home() {
                   <div className="flex items-center justify-between">
                     <div className="text-sm font-semibold text-white/85">{r.name}</div>
                     <div className="text-xs">
-                      <Stars count={r.rating} />
+                      <Stars />
                     </div>
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">

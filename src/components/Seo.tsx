@@ -1,59 +1,74 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
-type Props = {
+type SeoProps = {
   title: string;
   description: string;
-  path?: string; // like "/contact"
+  path: string;
+  canonicalBase?: string; // set in one place if you want later
+  jsonLd?: Record<string, unknown>;
 };
 
-const SITE_NAME = "ALLSTARS Mobile Detailing";
-const PHONE = "+16893127408";
+function setMeta(name: string, content: string) {
+  let el = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute("name", name);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
 
-export default function Seo({ title, description, path = "/" }: Props) {
-  // Works on Vercel + locally without you hardcoding a URL
-  const origin =
-    typeof window !== "undefined" ? window.location.origin : "https://example.com";
+function setProperty(property: string, content: string) {
+  let el = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement | null;
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute("property", property);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
 
-  const url = `${origin}${path}`;
+export default function Seo({
+  title,
+  description,
+  path,
+  canonicalBase,
+  jsonLd,
+}: SeoProps) {
+  useEffect(() => {
+    document.title = title;
 
-  return (
-    <Helmet>
-      {/* Basics */}
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
+    setMeta("description", description);
+    setProperty("og:title", title);
+    setProperty("og:description", description);
+    setProperty("og:type", "website");
 
-      {/* Open Graph */}
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:url" content={url} />
+    // Canonical (optional – add your final domain later)
+    const canonicalUrl =
+      canonicalBase && canonicalBase.startsWith("http")
+        ? `${canonicalBase.replace(/\/$/, "")}${path}`
+        : "";
 
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
+    let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "canonical";
+      document.head.appendChild(link);
+    }
+    if (canonicalUrl) link.href = canonicalUrl;
 
-      {/* LocalBusiness Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: SITE_NAME,
-          telephone: PHONE,
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "2346 Roberts Blvd",
-            addressLocality: "Orlando",
-            addressRegion: "FL",
-            postalCode: "32812",
-            addressCountry: "US",
-          },
-          areaServed: "Within 25 miles of Orlando, FL",
-          description:
-            "Premium mobile car detailing in Orlando, FL. Interior deep cleans, exterior wash, and full detail packages delivered to your home or workplace.",
-          openingHours: "Mo-Su 08:00-18:00",
-        })}
-      </script>
-    </Helmet>
-  );
+    // JSON-LD (optional)
+    const existing = document.getElementById("jsonld") as HTMLScriptElement | null;
+    if (jsonLd) {
+      const script = existing ?? document.createElement("script");
+      script.id = "jsonld";
+      script.type = "application/ld+json";
+      script.text = JSON.stringify(jsonLd);
+      if (!existing) document.head.appendChild(script);
+    } else if (existing) {
+      existing.remove();
+    }
+  }, [title, description, path, canonicalBase, jsonLd]);
+
+  return null;
 }
