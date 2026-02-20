@@ -3,6 +3,7 @@ import Seo from "../components/Seo";
 import heroVideo from "../assets/hero.mp4";
 
 const PHONE_TEL = "tel:+16893127408";
+const GOOGLE_REVIEWS_URL = "https://share.google/1za8xvX2LShuePDiG";
 
 const REVIEWS = [
   {
@@ -40,7 +41,6 @@ export default function Home() {
       />
 
       <section className="relative overflow-hidden bg-zinc-950">
-        {/* Video background */}
         <div className="pointer-events-none absolute inset-0">
           <video
             className="absolute inset-0 h-full w-full object-cover"
@@ -217,18 +217,28 @@ export default function Home() {
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
             <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div>
-                <h2 className="text-2xl font-bold">What customers say</h2>
+                <h2 className="text-2xl font-bold">Customer Reviews</h2>
                 <p className="mt-2 max-w-2xl text-white/70">
-                  Real reviews from real customers — focused on professionalism, convenience, and results.
+                  Trusted for quality work, great communication, and convenience.
                 </p>
               </div>
 
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-white/90"
-              >
-                Get a Free Quote
-              </Link>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={GOOGLE_REVIEWS_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-white/90"
+                >
+                  Read Google Reviews
+                </a>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/15"
+                >
+                  Get a Free Quote
+                </Link>
+              </div>
             </div>
 
             <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -250,9 +260,16 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="mt-6 text-xs text-white/50">
-              Want more reviews here? Send 3–6 more and I’ll add them in.
-            </p>
+            <div className="mt-6">
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-semibold text-white/80 underline hover:text-white"
+              >
+                Leave a Google Review
+              </a>
+            </div>
           </div>
         </div>
       </section>
