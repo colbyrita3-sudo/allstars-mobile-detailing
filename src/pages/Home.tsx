@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import heroVideo from "../assets/hero.mp4";
 const PHONE_TEL = "tel:+16893127408";
