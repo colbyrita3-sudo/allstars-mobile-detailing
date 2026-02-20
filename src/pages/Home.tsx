@@ -70,25 +70,46 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right side card */}
+          {/* Right side premium card */}
           <div className="relative">
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur">
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] shadow-2xl backdrop-blur">
               <div className="aspect-[4/3] w-full p-8">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-white/90">
-                  Same-day availability (when open)
+                {/* Top row badges */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-white/90">
+                    Same-day availability
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-white/90">
+                    ★★★★★ <span className="text-white/70">5.0</span>
+                    <span className="text-white/60">(reviews)</span>
+                  </span>
                 </div>
 
                 <div className="mt-4 text-3xl font-bold leading-tight">
-                  Fast Quote.
+                  Premium Mobile Detailing
                   <br />
-                  We Come To You.
+                  at Your Location
                 </div>
 
                 <p className="mt-3 max-w-sm text-sm text-white/75">
-                  Text your vehicle + your area and we’ll respond with pricing and the next
+                  Send your vehicle + your area. We’ll reply with pricing and the next
                   available times.
                 </p>
 
+                {/* Service chips */}
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs text-white/80">
+                    Exterior
+                  </span>
+                  <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs text-white/80">
+                    Interior
+                  </span>
+                  <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs text-white/80">
+                    Full Detail
+                  </span>
+                </div>
+
+                {/* Buttons */}
                 <div className="mt-6 grid gap-3">
                   <a
                     href={PHONE_TEL}
@@ -109,10 +130,6 @@ export default function Home() {
                   Serving within 25 miles of Orlando • Hours 8am–6pm
                 </div>
               </div>
-            </div>
-
-            <div className="mt-4 text-center text-xs text-white/50">
-              Based in Orlando, FL • Hours 8am–6pm
             </div>
           </div>
         </div>
