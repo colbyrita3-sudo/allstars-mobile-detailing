@@ -40,6 +40,7 @@ export default function Home() {
         path="/"
       />
 
+      {/* HERO */}
       <section className="relative overflow-hidden bg-zinc-950">
         <div className="pointer-events-none absolute inset-0">
           <video
@@ -57,7 +58,6 @@ export default function Home() {
         </div>
 
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-14 md:grid-cols-2 md:py-20">
-          {/* Left */}
           <div className="relative">
             <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs font-semibold text-white/80">
               Orlando • Mobile detailing • Within 25 miles
@@ -88,20 +88,17 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-8 grid gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-              <div className="grid gap-2 text-sm text-white/75">
-                <div className="font-semibold text-white/90">What you get</div>
-                <ul className="mt-1 grid gap-2">
-                  <li>✅ Mobile service — we come to you</li>
-                  <li>✅ Pro products & careful hand work</li>
-                  <li>✅ Clear starting prices + fast quotes</li>
-                  <li>✅ Interior & exterior packages for any vehicle</li>
-                </ul>
-              </div>
+            <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div className="text-sm font-semibold text-white/90">What you get</div>
+              <ul className="mt-3 grid gap-2 text-sm text-white/75">
+                <li>✅ Mobile service — we come to you</li>
+                <li>✅ Pro products & careful hand work</li>
+                <li>✅ Clear starting prices + fast quotes</li>
+                <li>✅ Interior & exterior packages for any vehicle</li>
+              </ul>
             </div>
           </div>
 
-          {/* Right card */}
           <div className="relative">
             <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] shadow-2xl backdrop-blur">
               <div className="aspect-[4/3] w-full p-8">
@@ -111,7 +108,6 @@ export default function Home() {
                   </span>
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-white/90">
                     ★★★★★ <span className="text-white/70">5.0</span>
-                    <span className="text-white/60">(reviews)</span>
                   </span>
                 </div>
 
@@ -122,8 +118,7 @@ export default function Home() {
                 </div>
 
                 <p className="mt-3 max-w-sm text-sm text-white/75">
-                  Send your vehicle + your area. We’ll reply with pricing and the next
-                  available times.
+                  Send your vehicle + your area. We’ll reply with pricing and available times.
                 </p>
 
                 <div className="mt-5 flex flex-wrap gap-2">
@@ -163,7 +158,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Packages */}
+      {/* PACKAGES */}
       <section className="bg-zinc-950">
         <div className="mx-auto max-w-6xl px-4 py-14">
           <div className="mb-8">
@@ -211,7 +206,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Reviews */}
+      {/* REVIEWS */}
       <section className="bg-zinc-950">
         <div className="mx-auto max-w-6xl px-4 pb-16">
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
