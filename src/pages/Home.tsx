@@ -211,7 +211,7 @@ export default function Home() {
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
             <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div>
-                <h2 className="text-2xl font-bold">Customer Reviews</h2>
+                <h2 className="text-2xl font-bold">Customer Reviews ⭐</h2>
                 <p className="mt-2 max-w-2xl text-white/70">
                   Trusted for quality work, great communication, and convenience.
                 </p>
