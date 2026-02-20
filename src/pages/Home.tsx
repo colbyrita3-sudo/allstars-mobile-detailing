@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 import heroVideo from "../assets/hero.mp4";
 
 const PHONE_TEL = "tel:+16893127408";
@@ -6,6 +7,12 @@ const PHONE_TEL = "tel:+16893127408";
 export default function Home() {
   return (
     <>
+      <Seo
+        title="Mobile Car Detailing Orlando, FL | ALLSTARS Mobile Detailing"
+        description="Premium mobile car detailing within 25 miles of Orlando. Interior deep cleans, exterior hand washes, and full detail packages. Get a fast free quote today."
+        path="/"
+      />
+
       <section className="relative overflow-hidden bg-zinc-950">
         {/* Video background */}
         <div className="pointer-events-none absolute inset-0">
@@ -74,7 +81,6 @@ export default function Home() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] shadow-2xl backdrop-blur">
               <div className="aspect-[4/3] w-full p-8">
-                {/* Top row badges */}
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-white/90">
                     Same-day availability
@@ -96,7 +102,6 @@ export default function Home() {
                   available times.
                 </p>
 
-                {/* Service chips */}
                 <div className="mt-5 flex flex-wrap gap-2">
                   <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs text-white/80">
                     Exterior
@@ -109,7 +114,6 @@ export default function Home() {
                   </span>
                 </div>
 
-                {/* Buttons */}
                 <div className="mt-6 grid gap-3">
                   <a
                     href={PHONE_TEL}
