@@ -4,6 +4,32 @@ import heroVideo from "../assets/hero.mp4";
 
 const PHONE_TEL = "tel:+16893127408";
 
+const REVIEWS = [
+  {
+    name: "Tawny Peedin",
+    rating: 5,
+    text: "Elijah is a very timely, communicative, and professional young man! He worked HARD to make my 2010 Mazda look like NEW again! And he offers a VERY reasonable price! Highly recommend!",
+  },
+  {
+    name: "Judy Sztuk",
+    rating: 5,
+    text: "Elijah is Very Courteous and Professional. My 6 year old vehicle Looks Brand New! Excellent work! So Happy he comes to my home!",
+  },
+  {
+    name: "Diana McCarthy",
+    rating: 5,
+    text: "If I could give ten stars, I would! We are selling our Dodge Ram 3500 and needed someone to come out and make it look great before the sale. Elijah responded to my texts right away, came on time, was so friendly and knowledgeable, and kept us up to date on the progress throughout. We used this truck to RV around the country for three years with two little boys in the back and the truck definitely looked lived in! He spent hours on it and paid attention to the littlest details. Once he was done, I didn't want to sell it anymore, I wanted to keep it for myself! I would 100% use Allstars Mobile Detailing again and would tell our friends to do the same. Prices were fair, service was great, and we're happy with the end result! Thanks guys!",
+  },
+];
+
+function Stars({ count = 5 }: { count?: number }) {
+  return (
+    <span className="text-white/90" aria-label={`${count} out of 5 stars`}>
+      {"★★★★★"}
+    </span>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -26,14 +52,12 @@ export default function Home() {
             preload="auto"
             poster="/hero-poster.webp"
           />
-          {/* Dark overlay so text is readable */}
           <div className="absolute inset-0 bg-black/60" />
-          {/* Subtle glow */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(56,189,248,0.22),transparent_55%)]" />
         </div>
 
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-14 md:grid-cols-2 md:py-20">
-          {/* Left side */}
+          {/* Left */}
           <div className="relative">
             <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs font-semibold text-white/80">
               Orlando • Mobile detailing • Within 25 miles
@@ -77,7 +101,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right side premium card */}
+          {/* Right card */}
           <div className="relative">
             <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] shadow-2xl backdrop-blur">
               <div className="aspect-[4/3] w-full p-8">
@@ -183,6 +207,52 @@ export default function Home() {
                 </Link>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section className="bg-zinc-950">
+        <div className="mx-auto max-w-6xl px-4 pb-16">
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+            <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <h2 className="text-2xl font-bold">What customers say</h2>
+                <p className="mt-2 max-w-2xl text-white/70">
+                  Real reviews from real customers — focused on professionalism, convenience, and results.
+                </p>
+              </div>
+
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-white/90"
+              >
+                Get a Free Quote
+              </Link>
+            </div>
+
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              {REVIEWS.map((r) => (
+                <div
+                  key={r.name}
+                  className="rounded-3xl border border-white/10 bg-white/[0.02] p-6"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="text-sm font-semibold text-white/85">{r.name}</div>
+                    <div className="text-xs">
+                      <Stars count={r.rating} />
+                    </div>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                    “{r.text}”
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-6 text-xs text-white/50">
+              Want more reviews here? Send 3–6 more and I’ll add them in.
+            </p>
           </div>
         </div>
       </section>
