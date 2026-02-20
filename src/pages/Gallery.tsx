@@ -47,7 +47,7 @@ export default function Gallery() {
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {PHOTOS.map((p) => (
-              <figure
+              <div
                 key={p.src}
                 className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03]"
               >
@@ -55,17 +55,9 @@ export default function Gallery() {
                   <GalleryImage src={p.src} alt={p.alt} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
-                <figcaption className="px-4 py-3 text-xs text-white/60">
-                  {p.alt}
-                </figcaption>
-              </figure>
+              </div>
             ))}
           </div>
-
-          <p className="mt-10 text-xs text-white/50">
-            Images load from <span className="text-white/70">public/gallery</span> and must be named{" "}
-            <span className="text-white/70">1.webp, 2.webp, 3.webp…</span>
-          </p>
         </div>
       </section>
     </>
